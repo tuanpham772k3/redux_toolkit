@@ -6,10 +6,28 @@ export interface UsersState {
 }
 
 export const fetchUserById = createAsyncThunk(
-    'users/fetchByIdStatus',
+    'GetUser',
     async (userId, thunkAPI) => {
         const response = await axios.get(`users`)
         console.log("data", response);
+        return response
+
+    },
+);
+
+export const createUser = createAsyncThunk(
+    'Create',
+    async (payload: any, thunkAPI) => {
+        const response = await axios.post(`users`,
+            {
+                name: payload.name,
+                email: payload.email,
+            });
+        console.log("create", response);
+
+        if (response && response.status === 201) {
+            thunkAPI.dispatch(fetchUserById())
+        }
         return response
 
     },
@@ -31,6 +49,9 @@ export const usersSlice = createSlice({
         builder.addCase(fetchUserById.fulfilled, (state, action) => {
             // Add user to the state array
             state.listUser = action.payload
+        });
+        builder.addCase(createUser.fulfilled, (state, action) => {
+            // Add user to the state array
         })
     },
 })
