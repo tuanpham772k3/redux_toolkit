@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../Redux/hook';
 import { fetchUserById } from '../../Redux/User/UserSlice';
-import { Button, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 import Update from '../Modal/Update';
 import Delete from '../Modal/Delete';
-import { Link } from 'react-router-dom';
-import CreateUser from '../Modal/CreateUser';
+import CreateUser from '../Modal/CreateU
+
+ser';
 
 export default function TableUser() {
     const user = useAppSelector((state) => state.users.listUser)

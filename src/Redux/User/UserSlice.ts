@@ -1,9 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "../../../src/axios";
 
-export interface UsersState {
-    listUser: any;
-}
+
 
 export const fetchUserById = createAsyncThunk(
     'GetUser',
@@ -33,6 +31,9 @@ export const createUser = createAsyncThunk(
     },
 );
 
+export interface UsersState {
+    listUser: any;
+}
 const initialState: UsersState = {
     listUser: [],
 };
